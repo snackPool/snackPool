@@ -52,6 +52,7 @@
 	    <td>
 		<form action="index.php/welcome/cobrandoCuenta" method="POST">
 			<select name="listaPagos">
+
 				<option value="efectivo">Efectivo</option>
 				<option value="tarjeta">Tarjeta</option>
 			</select>
@@ -68,7 +69,6 @@
     </tbody>
 
 </table>
-                <!-- _____________________________FIN COBRAR CUENTA_______________________________ -->
                 </div>
             </div>
         </div>
