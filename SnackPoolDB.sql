@@ -34,7 +34,7 @@ CREATE TABLE cuenta(
 	total		FLOAT NOT NULL,
 	estadoDeCuenta  VARCHAR(10) NOT NULL,
 	subtotal 	FLOAT NOT NULL,
-	metodoPago 	VARCHAR(20) NOT NULL,
+	tipoPago 	VARCHAR(10) NOT NULL, 
 	CONSTRAINT pkCuenta PRIMARY kEY(idCuenta),
 	CONSTRAINT fk_CuComanda FOREIGN KEY(fkCuComanda) REFERENCES comanda(idComanda),
 	CONSTRAINT fk_CuEmpleado FOREIGN KEY(fkCuEmpleado) REFERENCES empleado(idEmpleado)
