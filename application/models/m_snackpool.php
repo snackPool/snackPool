@@ -383,4 +383,59 @@ function eliminandoProducto($idProducto){
 	$this->db->delete('producto'); 
 }
 
+function idusuario($idComanda){
+$this->db->select('fkCoEmpleado');
+$this->db->where('idComanda',$idComanda);
+$this->db->from('comanda');
+$query = $this->db->get();
+return $query->result_array();
+
+}
+
+function ticketConsumo($idComanda){
+
+	$this->db->select('producto.nombre as nomPro, producto.precio as prePro,
+					  cantidadConsumo,consumo.subtotal as conSub');
+	$this->db->where('idComanda',$idComanda);
+	$this->db->from('comanda');
+	$this->db->join('consumo','idComanda=idCoComanda');
+	$this->db->join('producto','idCoProducto=idProducto');
+	$query = $this->db->get();
+	return $query->result_array();
+}
+
+function ticketPaquete($idComanda){
+
+	$this->db->select('paquete.nombre as nomPaq, paquete.precio as prePaq, 
+					comandaincluyepaquete.cantidad as canPaq, 
+					comandaincluyepaquete.subtotal as subPaq');
+	$this->db->where('idComanda',$idComanda);
+	$this->db->from('comanda');
+	$this->db->join('comandaincluyepaquete','idComanda=fkPaComanda');
+	$this->db->join('paquete','fkComandaPaq=idPaquete');
+
+	$query = $this->db->get();
+	return $query->result_array();
+}
+
+function datosGenerales($idComanda){
+
+	$this->db->select('idComanda,total,nombre,apellido');
+	$this->db->where('idComanda',$idComanda);
+	$this->db->from('comanda');
+	$this->db->join('cuenta','idComanda=fkCuComanda');
+	$this->db->join('empleado','fkCuEmpleado=idEmpleado');
+
+	$query = $this->db->get();
+	return $query->result_array();
+
+}
+
+
+
+
+
+
+
+
 }

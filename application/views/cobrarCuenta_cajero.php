@@ -48,6 +48,7 @@
             <td style="color:green;"><b><?php echo $row['fkCuComanda']; ?></b></td>
             <td><?php echo $row['nombre']; ?> <?php echo $row['apellido']; ?></td>
             <td><?php echo $row['total']; ?></td>
+<<<<<<< HEAD
 	    <td><?php echo $row['estadoDeCuenta']; ?></td>
 	    <td>
 		<form action="index.php/welcome/cobrandoCuenta" method="POST">
@@ -56,14 +57,9 @@
 				<option value="efectivo">Efectivo</option>
 				<option value="tarjeta">Tarjeta</option>
 			</select>
+=======
+>>>>>>> ec6226b239596bb9c2a37629ca33c5e3795b4982
 
-	    </td>
-	    <td>
-		<b>
-		<button value="<?php echo $row['fkCuComanda'] ?>" type="submit" name="fkCuComanda">Cobrar</button>
-		</a></b>
-	    </td>
-		</form>	
         </tr>
         <?php } ?>
     </tbody>
