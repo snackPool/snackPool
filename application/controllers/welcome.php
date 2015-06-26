@@ -829,6 +829,28 @@ class Welcome extends CI_Controller {
 		$this->load->view('administradorMenu',$msj_P);
 	}
 
+
+	function ticketConsumo(){
 	
+        $idComanda = $this->input->get('fkCuComanda');
+        $ticketConsumo = $this->m_snackpool->ticketConsumo($idComanda);
+       	
+        $ticketPaquete = $this->m_snackpool->ticketPaquete($idComanda);
+        
+        $datosGenerales = $this->m_snackpool->datosGenerales($idComanda);
+        /*$datosG= array('idComanda' =>$datosGenerales[0]['idComanda'],
+        				'nombre'=>$datosGenerales[0]['nombre'],
+        				'total' => $datosGenerales[0]['total'],
+        				'apellido' => $datosGenerales[0]['apellido']);
+        //print_r($datosG);*/
+       $datos=array('ticketConsumo' => $ticketConsumo,'ticketPaquete' => $ticketPaquete,
+        			'datosGenerales'=>$datosGenerales);
+
+		$this->load->view('ticket',$datos);
+
+        
+	}
+
+
 }
 
