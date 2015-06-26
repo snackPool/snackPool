@@ -1,10 +1,6 @@
+
 <!DOCTYPE html>
 <html lang="es">
-
-<!-- <?php //session_start(); // Iniciando sesión
-     /* if(! isSet($_SESSION['logueado']) ){
-        header('Location: http://localhost/login.php');
-    } */ ?> -->
 
 <head>
 
