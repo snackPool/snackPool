@@ -48,6 +48,7 @@
             <td><?php echo $row['nombre']; ?> <?php echo $row['apellido']; ?></td>
             <td><?php echo $row['total']; ?></td>
             <td><?php echo $row['estadoDeCuenta']; ?></td>
+            <td><b><a style="color:green;" href="index.php/welcome/ticketConsumo?fkCuComanda=<?php echo $row['fkCuComanda'] ?>">Generar Ticket</a></b></td>
             <td><b><a style="color:green;" href="index.php/welcome/cobrandoCuenta?fkCuComanda=<?php echo $row['fkCuComanda'] ?>">Cobrar</a></b></td>
         </tr>
         <?php } ?>
