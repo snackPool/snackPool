@@ -5,6 +5,7 @@ class Welcome extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 		$this->load->model('m_snackpool');
+		$this->load->library('session');
 	}
 
 	public function index(){
@@ -23,7 +24,7 @@ class Welcome extends CI_Controller {
 			if(!empty( $id))
 			{
 				
-		$this->load->view('menu_mesero');
+			$this->load->view('menu_mesero');
 			}
 
 		else{
@@ -35,18 +36,15 @@ class Welcome extends CI_Controller {
 	}
 
 	public function logueadoCajero(){
+		$id=$this->session->userdata('idusuario');
 	
-	$id=$this->session->userdata('idusuario');
-			if(!empty( $id))
-			{
-				$this->load->view('menu_cajero');
-
-			}
-
+		if(!empty( $id)){
+			$this->load->view('menu_cajero');
+		}
 		else{
 			$this->index();
-
-			}
+		}
+		
 	}
 
 	public function logueadoAdmin(){
@@ -779,9 +777,10 @@ class Welcome extends CI_Controller {
 	}
 
 	function cobrandoCuenta(){
-
-		$idComanda = $this->input->get('fkCuComanda');
-		$this->m_snackpool->cobrandoCuenta($idComanda);
+		$metodoDePago = $this->input->post('listaPagos');
+		$idComanda = $this->input->post('fkCuComanda');
+		//print_r($metodoDePago);
+		$this->m_snackpool->cobrandoCuenta($idComanda,$metodoDePago);
 		$msj='La Cuenta Ahora Está Pagada';
 		$msj=array('msj'=>$msj);
 		$this->load->view('menu_cajero',$msj);

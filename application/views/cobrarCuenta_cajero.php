@@ -32,7 +32,8 @@
             <th>Numero de la Comanda</th> <!--th es para columnas y tr para filas, td es para columnas de las cuerpo-->
             <th>Nombre del Empleado </th>
             <th>Total del Consumo</th>
-            <th>Estado de Cuenta </th>
+	    <th>Estado de Cuenta </th>
+	    <th>Tipo de pago	</th>
             <th></th>
             
             
@@ -47,16 +48,12 @@
             <td style="color:green;"><b><?php echo $row['fkCuComanda']; ?></b></td>
             <td><?php echo $row['nombre']; ?> <?php echo $row['apellido']; ?></td>
             <td><?php echo $row['total']; ?></td>
-            <td><?php echo $row['estadoDeCuenta']; ?></td>
-            <td><b><a style="color:green;" href="index.php/welcome/ticketConsumo?fkCuComanda=<?php echo $row['fkCuComanda'] ?>">Generar Ticket</a></b></td>
-            <td><b><a style="color:green;" href="index.php/welcome/cobrandoCuenta?fkCuComanda=<?php echo $row['fkCuComanda'] ?>">Cobrar</a></b></td>
+
         </tr>
         <?php } ?>
     </tbody>
 
 </table>
-
-
                 <!-- _____________________________FIN COBRAR CUENTA_______________________________ -->
                 </div>
             </div>
