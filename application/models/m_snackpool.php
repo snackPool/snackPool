@@ -219,7 +219,7 @@ function consultaComanda($idUser,$fecha,$idComanda){
 function consultaComandaElimina($fecha){
 	$this->db->select('empleado.nombre as nombreEmpleado,idComanda,fecha,hora,
 					 total');
-	$this->db->where('fecha',$fecha);
+	$this->db->where('comanda.fecha',$fecha);
 	$this->db->where('estadoDeCuenta','No-pagado');
 	$this->db->where('estado','No-eliminado');
 	$this->db->from('empleado');
@@ -304,18 +304,19 @@ function consultaCuenta($fecha)
 {
 	$this->db->select('fkCuComanda,nombre,apellido,total,estadoDeCuenta');
 	$this->db->where('estadoDeCuenta','No-pagado');
-	$this->db->where('fecha',$fecha);
+	$this->db->where('comanda.fecha',$fecha);
 	$this->db->from('cuenta');
 	$this->db->join('empleado', 'fkCuEmpleado=idEmpleado');
-	$this->db->join('Comanda','fkCuComanda=idComanda');
+	$this->db->join('comanda','fkCuComanda=idComanda');
 	$query=$this->db->get();
 
 	return $query->result_array();
 }
 
-function cobrandoCuenta($idComanda){
-
+function cobrandoCuenta($idComanda,$tipoDePago){
+	
 	$this->db->set('estadoDeCuenta','Pagado');
+	$this->db->set('tipoPago',$tipoDePago);
 	$this->db->where('fkCuComanda',$idComanda);
 	$this->db->update('cuenta');
 
